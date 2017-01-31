@@ -1,0 +1,112 @@
+this document is make up by ye min khuang(pho cho) 2015-2016 
+how to install openerp-server version 7 in ubuntu 12.04
+
+step 1> install dependencies
+sudo apt-get install python-dateutil python-docutils python-feedparser python-jinja2 python-ldap python-libxslt1 python-lxml python-mako python-mock python-openid python-psycopg2 python-psutil python-pybabel python-pychart python-pydot python-pyparsing python-reportlab python-simplejson python-tz python-unittest2 python-vatnumber python-vobject python-webdav python-werkzeug python-xlwt python-yaml python-zsi poppler-utils
+
+dependency for odoo 8>
+
+sudo apt-get install python-dateutil python-docutils python-feedparser python-jinja2 python-ldap python-libxslt1 python-lxml python-mako python-mock python-openid python-psycopg2 python-psutil python-pybabel python-pychart python-pydot python-pyparsing python-reportlab python-simplejson python-tz python-unittest2 python-vatnumber python-vobject python-webdav python-werkzeug python-xlwt python-yaml python-zsi poppler-utils python-pip python-pyPdf  python-decorator
+supporting package>
+
+sudo apt-get install gcc python-dev mc bzr python-setuptools python-babel python-feedparser python-reportlab-accel python-zsi python-openssl python-egenix-mxdatetime python-jinja2 python-unittest2 python-mock python-docutils lptools make python-psutil python-paramiko poppler-utils python-pdftools antiword 
+
+
+confirm statement for odoo version 9
+sudo apt-get install python-passlib python-werkzeug python-decorator python-dateutil python-tz python-psycopg2 python-pybabel python-yaml python-mako python-pychart python-psutil python-jinja2 python-docutils python-xlwt python-suds python-pypdf 
+
+
+sudo apt-get install python-pip
+sudo pip install ofxparse==0.14
+
+
+ref:https://www.getopenerp.com/easy-odoo8-installation/
+
+====================================================================
+
+step 2>how to install postgresql-9.3
+why don't you install lastest version now,
+postgres-9.3 is stable now, that is why
+if postgres-9.4 is stable and can able to use , we will try to upgrade.
+************************************
+how to install postgresql 9.3 which is stable now
+
+sudo apt-get update
+
+sudo apt-get -y install python-software-properties
+
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+lsb_release -c
+
+**you can see code-name**
+replace codename
+
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ codename-pgdg main" >> /etc/apt/sources.list.d/postgresql.list'
+
+sudo apt-get update
+sudo apt-get install postgresql-9.3 pgadmin3
+
+*************************************
+pgadmin3 is to IDE to use postgres
+======================================================================
+step 3> install java development kit
+
+to install open-jdk-server
+version 7 is stable
+
+sudo apt-get install openjdk-7-jdk
+=======================================================================
+step 4> create role and permission to database as computer name
+
+sudo su postgres
+createdb #computer_name
+psql #computer_name
+create user #computer_name with createdb;
+\q
+exit
+=======================================================================
+step 5> config at postgres
+cd /etc/postgresql/9.3/main
+(sudo apt-get install vim)
+sudo vim pg_hba.conf
+and change 'Method'like that
+
+
+Database administrative login by Unix domain socket
+local   all             postgres                                trust
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only
+local   all             all                                     peer
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            trust
+# IPv6 local connections:
+host    all             all             ::1/128                 md5
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+#local   replication     postgres                                peer
+#host    replication     postgres        127.0.0.1/32            md5
+#host    replication     postgres        ::1/128                 md5
+========================================================================
+
+step 6> install ssh-server 
+to access server as remotely
+
+sudo apt-get install openssh-client
+sudo apt-get install openssh-server
+
+
+
+
+
+
+
+
+
+
+
+
+
+
