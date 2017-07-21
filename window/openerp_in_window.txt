@@ -1,0 +1,136 @@
+remark
+
+##############################################
+we already collected  all reqirement tools 
+for window odoo installing
+and downloaded 2016 Sep, so some of tools 
+may need to download by request or may out of date
+
+testing with jti developing server
+testing with openerp version 7
+oracle jdk
+openerp one click
+postgresql
+active python
+xlrd python module
+** this about what i done in jti_server testing**
+##############################################
+Step(1)
+
+
+by installing one click installing in window 
+
+plz make sure this,
+
+->click openerp server
+->click postgresql database
+
+
+but if you want to use postgresql in 
+'D' partation or other vesion
+version we use is 9.3
+
+unclick postgresql database
+if unclick postgresql database,
+you have to install postgresql =>
+go how to install postgresql in window for openerp
+but it is normal installing but have to change some config 
+under openerp(odoo)
+###############################################
+step(2)
+server will located in 
+C:\Program Files (x86)\OpenERP 7.0-20150803
+
+under it, there are server and service folder
+all of the module we create will
+C:\Program Files (x86)\OpenERP 7.0-20150803\server\custom_modules
+
+all of python or java that need to run server is
+under server path
+C:\Program Files (x86)\OpenERP 7.0-20150803\server
+################################################
+step(3)
+1)we will change all of 'openerp' folder from development server 
+to deployment server
+
+2)for the jti devlopment, we need xlrd python module
+i downloaded xlrd python offical website and place under
+C:\Program Files (x86)\OpenERP 7.0-20150803\server
+
+3)install orical jdk version 7
+Download from offical website and install it
+
+################################################
+step(4)
+changing environment variable and changing java path
+for openerp(odoo)
+
+after installing orical jdk version 7
+
+copy this folder to
+C:\Program Files\Java
+there
+C:\Program Files (x86)\OpenERP 7.0-20150803\server\
+as java
+
+and go to system properties
+Control Panel\System and Security\System
+click Advanced System Settings>Advanced>Environment Variables
+you will see two part
+
+User variables for administrator
+and
+System variables
+
+you have to add under 
+
+User variables for administrator
+
+variable
+JAVA_HOME
+Value
+C:\Program Files (x86)\OpenERP 7.0-20150803\server\Java\jdk1.7.0_79
+
+variable
+Path
+Value
+C:\Program Files (x86)\OpenERP 7.0-20150803\server\Java\jdk1.7.0_79\bin;C:\Program Files (x86)\OpenERP 7.0-20150803\server\Java\jre7\bin
+
+System variables
+
+variable
+JAVA_HOME
+C:\Program Files (x86)\OpenERP 7.0-20150803\server\Java\jdk1.7.0_79
+Value
+C:\Program Files (x86)\OpenERP 7.0-20150803\server\Java\jdk1.7.0_79\bin;C:\Program Files (x86)\OpenERP 7.0-20150803\server\Java\jre7\bin;
+
+Then restart your computer
+##################################################
+step (5)
+install active python
+
+
+copy active_master_master to C:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

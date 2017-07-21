@@ -1,0 +1,69 @@
+###########################################
+testing environment is window 2012 r2
+document by ye min khaung
+version 1.0
+date-23-11-2016
+############################################
+how-run-multiple-instances-openerp
+
+1)stop erp server
+>>>all of open erp server
+
+2)copy the whole server
+
+3)rename it
+
+4)open openerp-server.conf under new server
+>>> you can't edit under "C:\Program Files (x86)"
+plx use vim or change under somewhere editiable
+5)change port 
+	1)xmlrpcs_port
+	2)xmlrpc_port
+	3)netrpc_port
+6)change path of log file and
+logfile = C:\Program Files (x86)\OpenERP New\server\openerp-server.log
+>>> target to new openerp-server.log file
+addons_path = C:\Program Files (x86)\OpenERP New\server\openerp\addons,C:\Program Files (x86)\OpenERP New\server\custom_modules
+>>>target to new addons path and new customized module path
+
+how about postgres path?
+yes, if we installed new postgres server, we have to change config of postgres
+or if we want to use
+
+7)install rktool.exe
+what is rktool ?
+stand for window resource kits
+if you installed, there will be locate in your machine
+C:\Program Files (x86)\Windows Resource Kits\Tools
+
+8)call cmd> press window key >type cmd> right click > run as admin
+
+9)instsrv.exe "OpenERPSERVICENAME" C:\Program Files\OpenERP 7.0-cam\service\win32_service.exe"
+>>> to understand
+"OpenERPSERVICENAME" is new service name
+second is what do you want to run as service
+but as default , service user is local system
+
+for more information 
+read>https://support.microsoft.com/en-us/kb/137890
+or type in instsrv.exe as cmd
+INSTSRV MyService C:\mailsrv\mailsrv.exe -a MYDOMAIN\joebob -p foo
+
+
+Question is 
+what is openerp(odoo) service when we installed with oneclick installion?
+
+
+10)call cmd>regedit
+"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\OpenERPSERVICENAME"
+check "ImagePath" must be "c:\Program Files\OpenERP Instance 2\Server\service\win32_service.exe"
+what i mostly wrong is ""
+
+11)service start
+from command prompt type NET START <service name>
+
+###############################################
+credit to>
+http://www.zbeanztech.com/blog/how-run-multiple-instances-openerp-6-windows
+but changed some of config 
+###############################################

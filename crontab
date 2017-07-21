@@ -1,0 +1,10 @@
+crontab
+
+#you have to understand time concept,first
+sudo apt-get install gnome-schedule
+#easy way, but it can't be install openerp 
+
+backup script
+shutdown script
+
+

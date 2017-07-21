@@ -1,0 +1,108 @@
+enviroment
+cmd , command prompt, prompt,
+pstools ,Sysinternals Suite,
+postgresql version (9.3.5)
+window
+already installed openerp version 7
+version 1.0
+document by Ye Min Khaung (bkpeneil)
+============================================================
+Postgresql instance
+
+1)download pstools
+where>https://technet.microsoft.com/en-us/sysinternals/bb842062.aspx
+
+2)create folder
+for new instance postgres database.
+example:
+C:\Program Files\OpenERP 7.0-20150803\PostgreSQL\data
+is for default database location and default config
+
+new folder for database location and config for new postgresql
+
+
+3)give permission with "network service"
+   -> go to folder property
+   ->tab security
+   ->'click'>>edit
+   ->'click'>>add
+   ->'type'>>network service
+   ->'click'>>check name (must be correct)
+   ->'click'>>ok
+
+4)create user like super user (postgres)right
+    -> open cmd
+    -> go to bin (C:\Program Files\OpenERP 7.0-20150803\PostgreSQL\bin)
+    -> psql -U superuser postgres
+       psql -U openpg postgres
+    -> \du (list user-list)
+    -> create user peneil1 with superuser createrole createdb replication;
+    ->\q (exit)
+
+
+5)enter to folder of PSTools with cmd (cmd with admin right)
+   ->'click' start button
+   ->'search' cmd at search programs and files
+   ->'right click' Run as admin
+   ->'go to pstool folder'
+
+6)run psexec -i -u "nt authority\network service" cmd.exe
+   ->'Click' install(inital state, no need for next time)
+ 
+   -> happen >> new prompt will appear
+
+
+7) go to C:\Program Files\OpenERP 7.0-20150803\PostgreSQL\bin
+
+8)initdb -U peneil -E UTF8 "C:\Program Files\OpenERP 7.0-20150803\PostgreSQL\data2"
+read more for initdb at
+https://www.postgresql.org/docs/9.2/static/app-initdb.html
+
+   -> to understand
+
+      1) -U peneil
+      peneil is new super user for my case
+
+      2) -E UTF8 is format for database
+
+      3) "C:\Program Files\OpenERP 7.0-20150803\PostgreSQL\data2" is folder path in step 2
+
+9)exit prompt (prompt that appear in step 6 and also ran step 7)
+ plz exit all of prompt that used in
+
+10) change port at new folder (step 2)
+yes, we have to change some config under path of it
+C:\Program Files\OpenERP 7.0-20150803\PostgreSQL\data2
+  --> copy postgresql.conf to Desktop
+  --> search with 'port' and change to 5433 (5432 is default port)
+it is to run new instance
+
+11)open cmd with admin right and go to bin under postgres
+
+12)pg_ctl register -N pg_test3 -U "nt authority\network service" -D "C:\Program Files\OpenERP 7.0-20150803\PostgreSQL\data3"
+to understand
+pg_ctl is registering your new postgresql as service
+-N pg_test3 is service name
+-U "nt authority\network service" as logon user right
+-D "C:\Program Files\OpenERP 7.0-20150803\PostgreSQL\data2"
+ is path of data that you want to register
+
+
+13)net start pg_test
+ start service
+
+14)psql -U peneil -h localhost -p 5433 postgres
+-U peneil is superuser that you registed
+-p 5433 is port that used in data3
+
+
+===========================================================
+Testing result>
+we don't need to use 
+
+
+============================================================
+credit>
+http://stackoverflow.com/questions/6241793/are-independent-instances-of-postgresql-possible
+
+
